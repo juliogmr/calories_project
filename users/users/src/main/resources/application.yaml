@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: users
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/XE
+    username: system
+    password: oracle
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    format_sql: true
+    properties:
+      hibernate:
+        default_schema: USERS
+
+springdoc:
+  swagger-ui:
+    path=/:
+
+server:
+  port: 8081
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.springframework.data: DEBUG
+
+eureka:
+  client:
+    registerWithEureka: true  # Habilita o registro do serviço no Eureka
+    fetchRegistry: true       # Habilita a busca de outros serviços no Eureka
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/ # URL do seu servidor Eureka local
